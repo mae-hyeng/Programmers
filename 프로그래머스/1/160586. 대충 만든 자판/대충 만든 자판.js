@@ -11,35 +11,24 @@ function solution(keymap, targets) {
         }
     }
 
-  targets.forEach((t) => {
-    let totalPresses = 0;
-    let isPossible = true;
+    targets.forEach(t => {
+        let s = 0;
+        let flag = true;
+        t.split("").forEach(tt => {
+            let indexs = [];
 
-    t.split("").forEach((tt) => {
-      let indexs = [];
-
-      keymap.forEach((k) => {
-        const pos = k.indexOf(tt);
-        if (pos !== -1) {
-          indexs.push(pos);
-        }
-      });
-
-      const minPress = minValue(indexs);
-      if (minPress === -1) {
-        isPossible = false;
-      }
-      
-      if (minPress !== -1) {
-        totalPresses += minPress;
-      }
-    });
-
-    if (isPossible) {
-      result.push(totalPresses);
-    } else {
-      result.push(-1);
-    }
-  });
+            keymap.forEach(k => {
+                const pos = k.indexOf(tt);
+                if (pos !== -1) {
+                    indexs.push(pos);
+                }
+            });
+            
+            const min = minValue(indexs);
+            if (min === -1) flag = false;
+            else s += min;
+        })
+        flag ? result.push(s) : result.push(-1);
+    })
     return result;
 }
