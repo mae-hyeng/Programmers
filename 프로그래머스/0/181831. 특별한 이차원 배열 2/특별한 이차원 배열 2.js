@@ -1,11 +1,3 @@
 function solution(arr) {
-    let count = 0;
-    let loop = 0;
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
-            if (arr[i][j] === arr[j][i]) count++;
-            loop++;
-        }
-    }
-    return count === loop ? 1 : 0;
+    return arr.every((a, ai) => a.every((aa, aai) => arr[ai][aai] === arr[aai][ai])) ? 1 : 0;
 }
