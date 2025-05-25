@@ -1,0 +1,4 @@
+function solution(myStr) {
+    const arr = myStr.split(/[abc]/).filter(ms => ms !== "");
+    return arr.length > 0 ? arr : ["EMPTY"];
+}
