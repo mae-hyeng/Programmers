@@ -1,8 +1,6 @@
 function solution(numlist, n) {
     const rank = numlist.map((num, idx) => Math.abs(n - num));
     let obj = {};
-    let prev;
-    let count = 0;
 
     numlist.forEach((num, idx) => obj[num] = rank[idx]);
     
